@@ -15,7 +15,14 @@ export async function POST(request: NextRequest) {
     return Response.json({ error: "User not found" }, { status: 404 });
   }
 
-  const token = signToken({ userId: user.id, phone: user.phone, role: user.role });
+  const token = signToken({
+    userId: user.id,
+    phone: user.phone,
+    role: user.role,
+  });
 
-  return Response.json({ token, user: { id: user.id, phone: user.phone, name: user.name, role: user.role } });
+  return Response.json({
+    token,
+    user: { id: user.id, phone: user.phone, name: user.name, role: user.role },
+  });
 }
