@@ -1,9 +1,6 @@
-// import { NextRequest } from "next/server";
-// import { prisma } from "@/lib/prisma";
-// import { signToken } from "@/lib/jwt";
-// import { Role } from "@/generated/prisma";
-//
-// export async function POST(request: NextRequest) {
+import { NextRequest } from "next/server"; 
+ 
+export async function POST(request: NextRequest) {
 //   const body = await request.json();
 //   const { phone, code, name, role } = body;
 //
@@ -47,4 +44,4 @@
 //   const token = signToken({ userId: user.id, phone: user.phone, role: user.role });
 //
 //   return Response.json({ token, user: { id: user.id, phone: user.phone, name: user.name, role: user.role } });
-// }
+}

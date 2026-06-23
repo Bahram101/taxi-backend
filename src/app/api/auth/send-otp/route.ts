@@ -1,11 +1,10 @@
-// import { NextRequest } from "next/server";
-// import { prisma } from "@/lib/prisma";
+import { NextRequest } from "next/server"; 
+
+function generateOtp(): string {
+  return Math.floor(100000 + Math.random() * 900000).toString();
+}
 //
-// function generateOtp(): string {
-//   return Math.floor(100000 + Math.random() * 900000).toString();
-// }
-//
-// export async function POST(request: NextRequest) {
+export async function POST(request: NextRequest) {
 //   const body = await request.json();
 //   const { phone } = body;
 //
@@ -28,4 +27,4 @@
 //   console.log(`[OTP] Code for ${phone}: ${code}`);
 //
 //   return Response.json({ message: "OTP sent", ...(process.env.NODE_ENV !== "production" && { code }) });
-// }
+}
