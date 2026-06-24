@@ -1,15 +1,13 @@
 import { NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { signToken } from "@/lib/jwt";
-import { Role } from "@/generated/prisma/enums";
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  const { phone, name, role } = body;
+  const { phone, name, carModel, carNumber } = body;
 
-  if (!phone || !name || !role) {
+  if (!phone || !name || !carModel || !carNumber) {
     return Response.json(
-      { error: "phone, name and role are required" },
+      { error: "phone, name, carModel and carNumber are required" },
       { status: 400 },
     );
   }
@@ -22,24 +20,22 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  if (!Object.values(Role).includes(role)) {
-    return Response.json(
-      { error: "Invalid role. Must be CLIENT, DRIVER or ADMIN" },
-      { status: 400 },
-    );
-  }
-
   const existing = await prisma.user.findUnique({ where: { phone } });
   if (existing) {
-    return Response.json(
-      { error: "This phone number is already registered" },
-      { status: 409 },
-    );
+    return Response.json({ error: "This phone number is already registered" }, { status: 409 });
   }
 
-  const user = await prisma.user.create({ data: { phone, name, role } });
-
-  // const token = signToken({ userId: user.id, phone: user.phone, role: user.role });
+  const user = await prisma.user.create({
+    data: {
+      phone,
+      name,
+      role: "DRIVER",
+      driver: {
+        create: { carModel, carNumber },
+      },
+    },
+    include: { driver: true },
+  });
 
   return Response.json(
     {
@@ -48,6 +44,11 @@ export async function POST(request: NextRequest) {
         phone: user.phone,
         name: user.name,
         role: user.role,
+        driver: {
+          id: user.driver!.id,
+          carModel: user.driver!.carModel,
+          carNumber: user.driver!.carNumber,
+        },
       },
     },
     { status: 201 },
