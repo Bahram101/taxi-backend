@@ -3,7 +3,8 @@ import { prisma } from "@/lib/prisma";
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  const { phone, name, carModel, carNumber } = body;
+  console.log("body:", body);
+  const { phone, name, email, avatar, carModel, carNumber } = body;
 
   if (!phone || !name || !carModel || !carNumber) {
     return Response.json(
@@ -29,6 +30,8 @@ export async function POST(request: NextRequest) {
     data: {
       phone,
       name,
+      email,
+      avatar,
       role: "DRIVER",
       driver: {
         create: { carModel, carNumber },
@@ -44,6 +47,8 @@ export async function POST(request: NextRequest) {
         phone: user.phone,
         name: user.name,
         role: user.role,
+        email: user.email,
+        avatar: user.avatar,
         driver: {
           id: user.driver!.id,
           carModel: user.driver!.carModel,

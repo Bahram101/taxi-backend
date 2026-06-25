@@ -15,6 +15,10 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  email     String?
+  avatar    String?
+  rating    Float?
+
   driver Driver?
   orders Order[]
 }

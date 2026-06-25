@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  const { phone, name } = body;
+  const { phone, name, email, avatar } = body;
 
   if (!phone || !name) {
     return Response.json({ error: "phone and name are required" }, { status: 400 });
@@ -22,10 +22,10 @@ export async function POST(request: NextRequest) {
     return Response.json({ error: "This phone number is already registered" }, { status: 409 });
   }
 
-  const user = await prisma.user.create({ data: { phone, name, role: "CLIENT" } });
+  const user = await prisma.user.create({ data: { phone, name, role: "CLIENT", email, avatar } });
 
   return Response.json(
-    { user: { id: user.id, phone: user.phone, name: user.name, role: user.role } },
+    { user: { id: user.id, phone: user.phone, name: user.name, role: user.role, email: user.email, avatar: user.avatar } },
     { status: 201 },
   );
 }
