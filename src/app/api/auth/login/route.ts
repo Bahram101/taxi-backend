@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { generateRefreshToken, REFRESH_TOKEN_TTL_MS, signAccessToken } from "@/lib/jwt";
+import { signAccessToken, signRefreshToken } from "@/lib/jwt";
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
@@ -15,20 +15,9 @@ export async function POST(request: NextRequest) {
     return Response.json({ error: "User not found" }, { status: 404 });
   }
 
-  const accessToken = signAccessToken({
-    userId: user.id,
-    phone: user.phone,
-    role: user.role,
-  });
-
-  const refreshToken = generateRefreshToken();
-  await prisma.refreshToken.create({
-    data: {
-      token: refreshToken,
-      userId: user.id,
-      expiresAt: new Date(Date.now() + REFRESH_TOKEN_TTL_MS),
-    },
-  });
+  const payload = { userId: user.id, phone: user.phone, role: user.role };
+  const accessToken = signAccessToken(payload);
+  const refreshToken = signRefreshToken(payload);
 
   return Response.json({
     accessToken,

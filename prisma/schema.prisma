@@ -21,7 +21,6 @@ model User {
 
   driver Driver?
   orders Order[]
-  refreshTokens RefreshToken[]
 }
 
 model Driver {
@@ -57,19 +56,6 @@ model Order {
 
   client User    @relation(fields: [clientId], references: [id])
   driver Driver? @relation(fields: [driverId], references: [id])
-}
-
-model RefreshToken {
-  id        String   @id @default(uuid())
-  token     String   @unique
-  userId    String
-  expiresAt DateTime
-
-  createdAt DateTime @default(now())
-
-  user User @relation(fields: [userId], references: [id])
-
-  @@index([userId])
 }
 
 model OtpCode {
