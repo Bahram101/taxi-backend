@@ -8,28 +8,29 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  phone     String   @unique
-  name      String
-  role      Role
+  id     String  @id @default(uuid())
+  phone  String  @unique
+  name   String
+  role   Role
+  avatar String?
+  email  String?
+  rating Float?
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  email     String?
-  avatar    String?
-  rating    Float?
 
   driver Driver?
   orders Order[]
 }
 
 model Driver {
-  id        String   @id @default(uuid())
-  userId    String   @unique
-  carModel  String
-  carNumber String
-  rating    Float    @default(5.0)
-  isOnline  Boolean  @default(false)
+  id        String  @id @default(uuid())
+  userId    String  @unique
+  carModel  String?
+  carNumber String?
+  isOnline  Boolean @default(false)
+  rating    Float   @default(5.0)
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -38,26 +39,34 @@ model Driver {
 }
 
 model Order {
-  id String @id @default(uuid())
-
-  clientId String
-  client   User   @relation(fields: [clientId], references: [id])
-
-  driverId String?
-  driver   Driver? @relation(fields: [driverId], references: [id])
-
+  id          String      @id @default(uuid())
+  clientId    String
+  driverId    String?
   fromAddress String
+  toAddress   String
+  status      OrderStatus
   fromLat     Float
   fromLng     Float
-  toAddress   String
+  price       Decimal?
   toLat       Float
   toLng       Float
 
-  price  Decimal?
-  status OrderStatus
-
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  client User    @relation(fields: [clientId], references: [id])
+  driver Driver? @relation(fields: [driverId], references: [id])
+}
+
+model OtpCode {
+  id        String   @id @default(uuid())
+  phone     String
+  code      String
+  expiresAt DateTime
+
+  createdAt DateTime @default(now())
+
+  @@index([phone])
 }
 
 enum Role {
@@ -73,14 +82,4 @@ enum OrderStatus {
   STARTED
   COMPLETED
   CANCELLED
-}
-
-model OtpCode {
-  id        String   @id @default(uuid())
-  phone     String
-  code      String
-  expiresAt DateTime
-  createdAt DateTime @default(now())
-
-  @@index([phone])
 }

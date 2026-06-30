@@ -1,9 +1,10 @@
 import { NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
 
+// /api/auth/client/register
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  const { phone, name, email, avatar } = body;
+  const { phone, name } = body;
 
   if (!phone || !name) {
     return Response.json({ error: "phone and name are required" }, { status: 400 });
@@ -22,10 +23,10 @@ export async function POST(request: NextRequest) {
     return Response.json({ error: "This phone number is already registered" }, { status: 409 });
   }
 
-  const user = await prisma.user.create({ data: { phone, name, role: "CLIENT", email, avatar } });
+  const user = await prisma.user.create({ data: { phone, name, role: "CLIENT" } });
 
   return Response.json(
-    { user: { id: user.id, phone: user.phone, name: user.name, role: user.role, email: user.email, avatar: user.avatar } },
+    { user: { id: user.id, phone: user.phone, name: user.name, role: user.role } },
     { status: 201 },
   );
 }

@@ -29,17 +29,17 @@ export type AggregateOrder = {
 export type OrderAvgAggregateOutputType = {
   fromLat: number | null
   fromLng: number | null
+  price: runtime.Decimal | null
   toLat: number | null
   toLng: number | null
-  price: runtime.Decimal | null
 }
 
 export type OrderSumAggregateOutputType = {
   fromLat: number | null
   fromLng: number | null
+  price: runtime.Decimal | null
   toLat: number | null
   toLng: number | null
-  price: runtime.Decimal | null
 }
 
 export type OrderMinAggregateOutputType = {
@@ -47,14 +47,14 @@ export type OrderMinAggregateOutputType = {
   clientId: string | null
   driverId: string | null
   fromAddress: string | null
-  fromLat: number | null
-  fromLng: number | null
   toAddress: string | null
-  toLat: number | null
-  toLng: number | null
-  price: runtime.Decimal | null
   status: $Enums.OrderStatus | null
   createdAt: Date | null
+  fromLat: number | null
+  fromLng: number | null
+  price: runtime.Decimal | null
+  toLat: number | null
+  toLng: number | null
   updatedAt: Date | null
 }
 
@@ -63,14 +63,14 @@ export type OrderMaxAggregateOutputType = {
   clientId: string | null
   driverId: string | null
   fromAddress: string | null
-  fromLat: number | null
-  fromLng: number | null
   toAddress: string | null
-  toLat: number | null
-  toLng: number | null
-  price: runtime.Decimal | null
   status: $Enums.OrderStatus | null
   createdAt: Date | null
+  fromLat: number | null
+  fromLng: number | null
+  price: runtime.Decimal | null
+  toLat: number | null
+  toLng: number | null
   updatedAt: Date | null
 }
 
@@ -79,14 +79,14 @@ export type OrderCountAggregateOutputType = {
   clientId: number
   driverId: number
   fromAddress: number
-  fromLat: number
-  fromLng: number
   toAddress: number
-  toLat: number
-  toLng: number
-  price: number
   status: number
   createdAt: number
+  fromLat: number
+  fromLng: number
+  price: number
+  toLat: number
+  toLng: number
   updatedAt: number
   _all: number
 }
@@ -95,17 +95,17 @@ export type OrderCountAggregateOutputType = {
 export type OrderAvgAggregateInputType = {
   fromLat?: true
   fromLng?: true
+  price?: true
   toLat?: true
   toLng?: true
-  price?: true
 }
 
 export type OrderSumAggregateInputType = {
   fromLat?: true
   fromLng?: true
+  price?: true
   toLat?: true
   toLng?: true
-  price?: true
 }
 
 export type OrderMinAggregateInputType = {
@@ -113,14 +113,14 @@ export type OrderMinAggregateInputType = {
   clientId?: true
   driverId?: true
   fromAddress?: true
-  fromLat?: true
-  fromLng?: true
   toAddress?: true
-  toLat?: true
-  toLng?: true
-  price?: true
   status?: true
   createdAt?: true
+  fromLat?: true
+  fromLng?: true
+  price?: true
+  toLat?: true
+  toLng?: true
   updatedAt?: true
 }
 
@@ -129,14 +129,14 @@ export type OrderMaxAggregateInputType = {
   clientId?: true
   driverId?: true
   fromAddress?: true
-  fromLat?: true
-  fromLng?: true
   toAddress?: true
-  toLat?: true
-  toLng?: true
-  price?: true
   status?: true
   createdAt?: true
+  fromLat?: true
+  fromLng?: true
+  price?: true
+  toLat?: true
+  toLng?: true
   updatedAt?: true
 }
 
@@ -145,14 +145,14 @@ export type OrderCountAggregateInputType = {
   clientId?: true
   driverId?: true
   fromAddress?: true
-  fromLat?: true
-  fromLng?: true
   toAddress?: true
-  toLat?: true
-  toLng?: true
-  price?: true
   status?: true
   createdAt?: true
+  fromLat?: true
+  fromLng?: true
+  price?: true
+  toLat?: true
+  toLng?: true
   updatedAt?: true
   _all?: true
 }
@@ -248,14 +248,14 @@ export type OrderGroupByOutputType = {
   clientId: string
   driverId: string | null
   fromAddress: string
-  fromLat: number
-  fromLng: number
   toAddress: string
-  toLat: number
-  toLng: number
-  price: runtime.Decimal | null
   status: $Enums.OrderStatus
   createdAt: Date
+  fromLat: number
+  fromLng: number
+  price: runtime.Decimal | null
+  toLat: number
+  toLng: number
   updatedAt: Date
   _count: OrderCountAggregateOutputType | null
   _avg: OrderAvgAggregateOutputType | null
@@ -287,14 +287,14 @@ export type OrderWhereInput = {
   clientId?: Prisma.StringFilter<"Order"> | string
   driverId?: Prisma.StringNullableFilter<"Order"> | string | null
   fromAddress?: Prisma.StringFilter<"Order"> | string
-  fromLat?: Prisma.FloatFilter<"Order"> | number
-  fromLng?: Prisma.FloatFilter<"Order"> | number
   toAddress?: Prisma.StringFilter<"Order"> | string
-  toLat?: Prisma.FloatFilter<"Order"> | number
-  toLng?: Prisma.FloatFilter<"Order"> | number
-  price?: Prisma.DecimalNullableFilter<"Order"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   status?: Prisma.EnumOrderStatusFilter<"Order"> | $Enums.OrderStatus
   createdAt?: Prisma.DateTimeFilter<"Order"> | Date | string
+  fromLat?: Prisma.FloatFilter<"Order"> | number
+  fromLng?: Prisma.FloatFilter<"Order"> | number
+  price?: Prisma.DecimalNullableFilter<"Order"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  toLat?: Prisma.FloatFilter<"Order"> | number
+  toLng?: Prisma.FloatFilter<"Order"> | number
   updatedAt?: Prisma.DateTimeFilter<"Order"> | Date | string
   client?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   driver?: Prisma.XOR<Prisma.DriverNullableScalarRelationFilter, Prisma.DriverWhereInput> | null
@@ -305,14 +305,14 @@ export type OrderOrderByWithRelationInput = {
   clientId?: Prisma.SortOrder
   driverId?: Prisma.SortOrderInput | Prisma.SortOrder
   fromAddress?: Prisma.SortOrder
-  fromLat?: Prisma.SortOrder
-  fromLng?: Prisma.SortOrder
   toAddress?: Prisma.SortOrder
-  toLat?: Prisma.SortOrder
-  toLng?: Prisma.SortOrder
-  price?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  fromLat?: Prisma.SortOrder
+  fromLng?: Prisma.SortOrder
+  price?: Prisma.SortOrderInput | Prisma.SortOrder
+  toLat?: Prisma.SortOrder
+  toLng?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   client?: Prisma.UserOrderByWithRelationInput
   driver?: Prisma.DriverOrderByWithRelationInput
@@ -326,14 +326,14 @@ export type OrderWhereUniqueInput = Prisma.AtLeast<{
   clientId?: Prisma.StringFilter<"Order"> | string
   driverId?: Prisma.StringNullableFilter<"Order"> | string | null
   fromAddress?: Prisma.StringFilter<"Order"> | string
-  fromLat?: Prisma.FloatFilter<"Order"> | number
-  fromLng?: Prisma.FloatFilter<"Order"> | number
   toAddress?: Prisma.StringFilter<"Order"> | string
-  toLat?: Prisma.FloatFilter<"Order"> | number
-  toLng?: Prisma.FloatFilter<"Order"> | number
-  price?: Prisma.DecimalNullableFilter<"Order"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   status?: Prisma.EnumOrderStatusFilter<"Order"> | $Enums.OrderStatus
   createdAt?: Prisma.DateTimeFilter<"Order"> | Date | string
+  fromLat?: Prisma.FloatFilter<"Order"> | number
+  fromLng?: Prisma.FloatFilter<"Order"> | number
+  price?: Prisma.DecimalNullableFilter<"Order"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  toLat?: Prisma.FloatFilter<"Order"> | number
+  toLng?: Prisma.FloatFilter<"Order"> | number
   updatedAt?: Prisma.DateTimeFilter<"Order"> | Date | string
   client?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   driver?: Prisma.XOR<Prisma.DriverNullableScalarRelationFilter, Prisma.DriverWhereInput> | null
@@ -344,14 +344,14 @@ export type OrderOrderByWithAggregationInput = {
   clientId?: Prisma.SortOrder
   driverId?: Prisma.SortOrderInput | Prisma.SortOrder
   fromAddress?: Prisma.SortOrder
-  fromLat?: Prisma.SortOrder
-  fromLng?: Prisma.SortOrder
   toAddress?: Prisma.SortOrder
-  toLat?: Prisma.SortOrder
-  toLng?: Prisma.SortOrder
-  price?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  fromLat?: Prisma.SortOrder
+  fromLng?: Prisma.SortOrder
+  price?: Prisma.SortOrderInput | Prisma.SortOrder
+  toLat?: Prisma.SortOrder
+  toLng?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.OrderCountOrderByAggregateInput
   _avg?: Prisma.OrderAvgOrderByAggregateInput
@@ -368,28 +368,28 @@ export type OrderScalarWhereWithAggregatesInput = {
   clientId?: Prisma.StringWithAggregatesFilter<"Order"> | string
   driverId?: Prisma.StringNullableWithAggregatesFilter<"Order"> | string | null
   fromAddress?: Prisma.StringWithAggregatesFilter<"Order"> | string
-  fromLat?: Prisma.FloatWithAggregatesFilter<"Order"> | number
-  fromLng?: Prisma.FloatWithAggregatesFilter<"Order"> | number
   toAddress?: Prisma.StringWithAggregatesFilter<"Order"> | string
-  toLat?: Prisma.FloatWithAggregatesFilter<"Order"> | number
-  toLng?: Prisma.FloatWithAggregatesFilter<"Order"> | number
-  price?: Prisma.DecimalNullableWithAggregatesFilter<"Order"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   status?: Prisma.EnumOrderStatusWithAggregatesFilter<"Order"> | $Enums.OrderStatus
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Order"> | Date | string
+  fromLat?: Prisma.FloatWithAggregatesFilter<"Order"> | number
+  fromLng?: Prisma.FloatWithAggregatesFilter<"Order"> | number
+  price?: Prisma.DecimalNullableWithAggregatesFilter<"Order"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  toLat?: Prisma.FloatWithAggregatesFilter<"Order"> | number
+  toLng?: Prisma.FloatWithAggregatesFilter<"Order"> | number
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Order"> | Date | string
 }
 
 export type OrderCreateInput = {
   id?: string
   fromAddress: string
-  fromLat: number
-  fromLng: number
   toAddress: string
-  toLat: number
-  toLng: number
-  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   status: $Enums.OrderStatus
   createdAt?: Date | string
+  fromLat: number
+  fromLng: number
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  toLat: number
+  toLng: number
   updatedAt?: Date | string
   client: Prisma.UserCreateNestedOneWithoutOrdersInput
   driver?: Prisma.DriverCreateNestedOneWithoutOrdersInput
@@ -400,28 +400,28 @@ export type OrderUncheckedCreateInput = {
   clientId: string
   driverId?: string | null
   fromAddress: string
-  fromLat: number
-  fromLng: number
   toAddress: string
-  toLat: number
-  toLng: number
-  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   status: $Enums.OrderStatus
   createdAt?: Date | string
+  fromLat: number
+  fromLng: number
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  toLat: number
+  toLng: number
   updatedAt?: Date | string
 }
 
 export type OrderUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   fromAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  fromLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  fromLng?: Prisma.FloatFieldUpdateOperationsInput | number
   toAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  toLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  toLng?: Prisma.FloatFieldUpdateOperationsInput | number
-  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fromLat?: Prisma.FloatFieldUpdateOperationsInput | number
+  fromLng?: Prisma.FloatFieldUpdateOperationsInput | number
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  toLat?: Prisma.FloatFieldUpdateOperationsInput | number
+  toLng?: Prisma.FloatFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   client?: Prisma.UserUpdateOneRequiredWithoutOrdersNestedInput
   driver?: Prisma.DriverUpdateOneWithoutOrdersNestedInput
@@ -432,14 +432,14 @@ export type OrderUncheckedUpdateInput = {
   clientId?: Prisma.StringFieldUpdateOperationsInput | string
   driverId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fromAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  fromLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  fromLng?: Prisma.FloatFieldUpdateOperationsInput | number
   toAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  toLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  toLng?: Prisma.FloatFieldUpdateOperationsInput | number
-  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fromLat?: Prisma.FloatFieldUpdateOperationsInput | number
+  fromLng?: Prisma.FloatFieldUpdateOperationsInput | number
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  toLat?: Prisma.FloatFieldUpdateOperationsInput | number
+  toLng?: Prisma.FloatFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -448,28 +448,28 @@ export type OrderCreateManyInput = {
   clientId: string
   driverId?: string | null
   fromAddress: string
-  fromLat: number
-  fromLng: number
   toAddress: string
-  toLat: number
-  toLng: number
-  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   status: $Enums.OrderStatus
   createdAt?: Date | string
+  fromLat: number
+  fromLng: number
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  toLat: number
+  toLng: number
   updatedAt?: Date | string
 }
 
 export type OrderUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   fromAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  fromLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  fromLng?: Prisma.FloatFieldUpdateOperationsInput | number
   toAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  toLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  toLng?: Prisma.FloatFieldUpdateOperationsInput | number
-  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fromLat?: Prisma.FloatFieldUpdateOperationsInput | number
+  fromLng?: Prisma.FloatFieldUpdateOperationsInput | number
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  toLat?: Prisma.FloatFieldUpdateOperationsInput | number
+  toLng?: Prisma.FloatFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -478,14 +478,14 @@ export type OrderUncheckedUpdateManyInput = {
   clientId?: Prisma.StringFieldUpdateOperationsInput | string
   driverId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fromAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  fromLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  fromLng?: Prisma.FloatFieldUpdateOperationsInput | number
   toAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  toLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  toLng?: Prisma.FloatFieldUpdateOperationsInput | number
-  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fromLat?: Prisma.FloatFieldUpdateOperationsInput | number
+  fromLng?: Prisma.FloatFieldUpdateOperationsInput | number
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  toLat?: Prisma.FloatFieldUpdateOperationsInput | number
+  toLng?: Prisma.FloatFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -504,23 +504,23 @@ export type OrderCountOrderByAggregateInput = {
   clientId?: Prisma.SortOrder
   driverId?: Prisma.SortOrder
   fromAddress?: Prisma.SortOrder
-  fromLat?: Prisma.SortOrder
-  fromLng?: Prisma.SortOrder
   toAddress?: Prisma.SortOrder
-  toLat?: Prisma.SortOrder
-  toLng?: Prisma.SortOrder
-  price?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  fromLat?: Prisma.SortOrder
+  fromLng?: Prisma.SortOrder
+  price?: Prisma.SortOrder
+  toLat?: Prisma.SortOrder
+  toLng?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type OrderAvgOrderByAggregateInput = {
   fromLat?: Prisma.SortOrder
   fromLng?: Prisma.SortOrder
+  price?: Prisma.SortOrder
   toLat?: Prisma.SortOrder
   toLng?: Prisma.SortOrder
-  price?: Prisma.SortOrder
 }
 
 export type OrderMaxOrderByAggregateInput = {
@@ -528,14 +528,14 @@ export type OrderMaxOrderByAggregateInput = {
   clientId?: Prisma.SortOrder
   driverId?: Prisma.SortOrder
   fromAddress?: Prisma.SortOrder
-  fromLat?: Prisma.SortOrder
-  fromLng?: Prisma.SortOrder
   toAddress?: Prisma.SortOrder
-  toLat?: Prisma.SortOrder
-  toLng?: Prisma.SortOrder
-  price?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  fromLat?: Prisma.SortOrder
+  fromLng?: Prisma.SortOrder
+  price?: Prisma.SortOrder
+  toLat?: Prisma.SortOrder
+  toLng?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
@@ -544,23 +544,23 @@ export type OrderMinOrderByAggregateInput = {
   clientId?: Prisma.SortOrder
   driverId?: Prisma.SortOrder
   fromAddress?: Prisma.SortOrder
-  fromLat?: Prisma.SortOrder
-  fromLng?: Prisma.SortOrder
   toAddress?: Prisma.SortOrder
-  toLat?: Prisma.SortOrder
-  toLng?: Prisma.SortOrder
-  price?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  fromLat?: Prisma.SortOrder
+  fromLng?: Prisma.SortOrder
+  price?: Prisma.SortOrder
+  toLat?: Prisma.SortOrder
+  toLng?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type OrderSumOrderByAggregateInput = {
   fromLat?: Prisma.SortOrder
   fromLng?: Prisma.SortOrder
+  price?: Prisma.SortOrder
   toLat?: Prisma.SortOrder
   toLng?: Prisma.SortOrder
-  price?: Prisma.SortOrder
 }
 
 export type OrderCreateNestedManyWithoutClientInput = {
@@ -647,6 +647,10 @@ export type OrderUncheckedUpdateManyWithoutDriverNestedInput = {
   deleteMany?: Prisma.OrderScalarWhereInput | Prisma.OrderScalarWhereInput[]
 }
 
+export type EnumOrderStatusFieldUpdateOperationsInput = {
+  set?: $Enums.OrderStatus
+}
+
 export type NullableDecimalFieldUpdateOperationsInput = {
   set?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -655,21 +659,17 @@ export type NullableDecimalFieldUpdateOperationsInput = {
   divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
-export type EnumOrderStatusFieldUpdateOperationsInput = {
-  set?: $Enums.OrderStatus
-}
-
 export type OrderCreateWithoutClientInput = {
   id?: string
   fromAddress: string
-  fromLat: number
-  fromLng: number
   toAddress: string
-  toLat: number
-  toLng: number
-  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   status: $Enums.OrderStatus
   createdAt?: Date | string
+  fromLat: number
+  fromLng: number
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  toLat: number
+  toLng: number
   updatedAt?: Date | string
   driver?: Prisma.DriverCreateNestedOneWithoutOrdersInput
 }
@@ -678,14 +678,14 @@ export type OrderUncheckedCreateWithoutClientInput = {
   id?: string
   driverId?: string | null
   fromAddress: string
-  fromLat: number
-  fromLng: number
   toAddress: string
-  toLat: number
-  toLng: number
-  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   status: $Enums.OrderStatus
   createdAt?: Date | string
+  fromLat: number
+  fromLng: number
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  toLat: number
+  toLng: number
   updatedAt?: Date | string
 }
 
@@ -723,28 +723,28 @@ export type OrderScalarWhereInput = {
   clientId?: Prisma.StringFilter<"Order"> | string
   driverId?: Prisma.StringNullableFilter<"Order"> | string | null
   fromAddress?: Prisma.StringFilter<"Order"> | string
-  fromLat?: Prisma.FloatFilter<"Order"> | number
-  fromLng?: Prisma.FloatFilter<"Order"> | number
   toAddress?: Prisma.StringFilter<"Order"> | string
-  toLat?: Prisma.FloatFilter<"Order"> | number
-  toLng?: Prisma.FloatFilter<"Order"> | number
-  price?: Prisma.DecimalNullableFilter<"Order"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   status?: Prisma.EnumOrderStatusFilter<"Order"> | $Enums.OrderStatus
   createdAt?: Prisma.DateTimeFilter<"Order"> | Date | string
+  fromLat?: Prisma.FloatFilter<"Order"> | number
+  fromLng?: Prisma.FloatFilter<"Order"> | number
+  price?: Prisma.DecimalNullableFilter<"Order"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  toLat?: Prisma.FloatFilter<"Order"> | number
+  toLng?: Prisma.FloatFilter<"Order"> | number
   updatedAt?: Prisma.DateTimeFilter<"Order"> | Date | string
 }
 
 export type OrderCreateWithoutDriverInput = {
   id?: string
   fromAddress: string
-  fromLat: number
-  fromLng: number
   toAddress: string
-  toLat: number
-  toLng: number
-  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   status: $Enums.OrderStatus
   createdAt?: Date | string
+  fromLat: number
+  fromLng: number
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  toLat: number
+  toLng: number
   updatedAt?: Date | string
   client: Prisma.UserCreateNestedOneWithoutOrdersInput
 }
@@ -753,14 +753,14 @@ export type OrderUncheckedCreateWithoutDriverInput = {
   id?: string
   clientId: string
   fromAddress: string
-  fromLat: number
-  fromLng: number
   toAddress: string
-  toLat: number
-  toLng: number
-  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   status: $Enums.OrderStatus
   createdAt?: Date | string
+  fromLat: number
+  fromLng: number
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  toLat: number
+  toLng: number
   updatedAt?: Date | string
 }
 
@@ -794,28 +794,28 @@ export type OrderCreateManyClientInput = {
   id?: string
   driverId?: string | null
   fromAddress: string
-  fromLat: number
-  fromLng: number
   toAddress: string
-  toLat: number
-  toLng: number
-  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   status: $Enums.OrderStatus
   createdAt?: Date | string
+  fromLat: number
+  fromLng: number
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  toLat: number
+  toLng: number
   updatedAt?: Date | string
 }
 
 export type OrderUpdateWithoutClientInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   fromAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  fromLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  fromLng?: Prisma.FloatFieldUpdateOperationsInput | number
   toAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  toLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  toLng?: Prisma.FloatFieldUpdateOperationsInput | number
-  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fromLat?: Prisma.FloatFieldUpdateOperationsInput | number
+  fromLng?: Prisma.FloatFieldUpdateOperationsInput | number
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  toLat?: Prisma.FloatFieldUpdateOperationsInput | number
+  toLng?: Prisma.FloatFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   driver?: Prisma.DriverUpdateOneWithoutOrdersNestedInput
 }
@@ -824,14 +824,14 @@ export type OrderUncheckedUpdateWithoutClientInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   driverId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fromAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  fromLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  fromLng?: Prisma.FloatFieldUpdateOperationsInput | number
   toAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  toLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  toLng?: Prisma.FloatFieldUpdateOperationsInput | number
-  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fromLat?: Prisma.FloatFieldUpdateOperationsInput | number
+  fromLng?: Prisma.FloatFieldUpdateOperationsInput | number
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  toLat?: Prisma.FloatFieldUpdateOperationsInput | number
+  toLng?: Prisma.FloatFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -839,14 +839,14 @@ export type OrderUncheckedUpdateManyWithoutClientInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   driverId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fromAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  fromLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  fromLng?: Prisma.FloatFieldUpdateOperationsInput | number
   toAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  toLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  toLng?: Prisma.FloatFieldUpdateOperationsInput | number
-  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fromLat?: Prisma.FloatFieldUpdateOperationsInput | number
+  fromLng?: Prisma.FloatFieldUpdateOperationsInput | number
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  toLat?: Prisma.FloatFieldUpdateOperationsInput | number
+  toLng?: Prisma.FloatFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -854,28 +854,28 @@ export type OrderCreateManyDriverInput = {
   id?: string
   clientId: string
   fromAddress: string
-  fromLat: number
-  fromLng: number
   toAddress: string
-  toLat: number
-  toLng: number
-  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   status: $Enums.OrderStatus
   createdAt?: Date | string
+  fromLat: number
+  fromLng: number
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  toLat: number
+  toLng: number
   updatedAt?: Date | string
 }
 
 export type OrderUpdateWithoutDriverInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   fromAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  fromLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  fromLng?: Prisma.FloatFieldUpdateOperationsInput | number
   toAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  toLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  toLng?: Prisma.FloatFieldUpdateOperationsInput | number
-  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fromLat?: Prisma.FloatFieldUpdateOperationsInput | number
+  fromLng?: Prisma.FloatFieldUpdateOperationsInput | number
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  toLat?: Prisma.FloatFieldUpdateOperationsInput | number
+  toLng?: Prisma.FloatFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   client?: Prisma.UserUpdateOneRequiredWithoutOrdersNestedInput
 }
@@ -884,14 +884,14 @@ export type OrderUncheckedUpdateWithoutDriverInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   clientId?: Prisma.StringFieldUpdateOperationsInput | string
   fromAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  fromLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  fromLng?: Prisma.FloatFieldUpdateOperationsInput | number
   toAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  toLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  toLng?: Prisma.FloatFieldUpdateOperationsInput | number
-  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fromLat?: Prisma.FloatFieldUpdateOperationsInput | number
+  fromLng?: Prisma.FloatFieldUpdateOperationsInput | number
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  toLat?: Prisma.FloatFieldUpdateOperationsInput | number
+  toLng?: Prisma.FloatFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -899,14 +899,14 @@ export type OrderUncheckedUpdateManyWithoutDriverInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   clientId?: Prisma.StringFieldUpdateOperationsInput | string
   fromAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  fromLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  fromLng?: Prisma.FloatFieldUpdateOperationsInput | number
   toAddress?: Prisma.StringFieldUpdateOperationsInput | string
-  toLat?: Prisma.FloatFieldUpdateOperationsInput | number
-  toLng?: Prisma.FloatFieldUpdateOperationsInput | number
-  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fromLat?: Prisma.FloatFieldUpdateOperationsInput | number
+  fromLng?: Prisma.FloatFieldUpdateOperationsInput | number
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  toLat?: Prisma.FloatFieldUpdateOperationsInput | number
+  toLng?: Prisma.FloatFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -917,14 +917,14 @@ export type OrderSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   clientId?: boolean
   driverId?: boolean
   fromAddress?: boolean
-  fromLat?: boolean
-  fromLng?: boolean
   toAddress?: boolean
-  toLat?: boolean
-  toLng?: boolean
-  price?: boolean
   status?: boolean
   createdAt?: boolean
+  fromLat?: boolean
+  fromLng?: boolean
+  price?: boolean
+  toLat?: boolean
+  toLng?: boolean
   updatedAt?: boolean
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   driver?: boolean | Prisma.Order$driverArgs<ExtArgs>
@@ -935,14 +935,14 @@ export type OrderSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   clientId?: boolean
   driverId?: boolean
   fromAddress?: boolean
-  fromLat?: boolean
-  fromLng?: boolean
   toAddress?: boolean
-  toLat?: boolean
-  toLng?: boolean
-  price?: boolean
   status?: boolean
   createdAt?: boolean
+  fromLat?: boolean
+  fromLng?: boolean
+  price?: boolean
+  toLat?: boolean
+  toLng?: boolean
   updatedAt?: boolean
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   driver?: boolean | Prisma.Order$driverArgs<ExtArgs>
@@ -953,14 +953,14 @@ export type OrderSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   clientId?: boolean
   driverId?: boolean
   fromAddress?: boolean
-  fromLat?: boolean
-  fromLng?: boolean
   toAddress?: boolean
-  toLat?: boolean
-  toLng?: boolean
-  price?: boolean
   status?: boolean
   createdAt?: boolean
+  fromLat?: boolean
+  fromLng?: boolean
+  price?: boolean
+  toLat?: boolean
+  toLng?: boolean
   updatedAt?: boolean
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   driver?: boolean | Prisma.Order$driverArgs<ExtArgs>
@@ -971,18 +971,18 @@ export type OrderSelectScalar = {
   clientId?: boolean
   driverId?: boolean
   fromAddress?: boolean
-  fromLat?: boolean
-  fromLng?: boolean
   toAddress?: boolean
-  toLat?: boolean
-  toLng?: boolean
-  price?: boolean
   status?: boolean
   createdAt?: boolean
+  fromLat?: boolean
+  fromLng?: boolean
+  price?: boolean
+  toLat?: boolean
+  toLng?: boolean
   updatedAt?: boolean
 }
 
-export type OrderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "clientId" | "driverId" | "fromAddress" | "fromLat" | "fromLng" | "toAddress" | "toLat" | "toLng" | "price" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["order"]>
+export type OrderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "clientId" | "driverId" | "fromAddress" | "toAddress" | "status" | "createdAt" | "fromLat" | "fromLng" | "price" | "toLat" | "toLng" | "updatedAt", ExtArgs["result"]["order"]>
 export type OrderInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   driver?: boolean | Prisma.Order$driverArgs<ExtArgs>
@@ -1007,14 +1007,14 @@ export type $OrderPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     clientId: string
     driverId: string | null
     fromAddress: string
-    fromLat: number
-    fromLng: number
     toAddress: string
-    toLat: number
-    toLng: number
-    price: runtime.Decimal | null
     status: $Enums.OrderStatus
     createdAt: Date
+    fromLat: number
+    fromLng: number
+    price: runtime.Decimal | null
+    toLat: number
+    toLng: number
     updatedAt: Date
   }, ExtArgs["result"]["order"]>
   composites: {}
@@ -1445,14 +1445,14 @@ export interface OrderFieldRefs {
   readonly clientId: Prisma.FieldRef<"Order", 'String'>
   readonly driverId: Prisma.FieldRef<"Order", 'String'>
   readonly fromAddress: Prisma.FieldRef<"Order", 'String'>
-  readonly fromLat: Prisma.FieldRef<"Order", 'Float'>
-  readonly fromLng: Prisma.FieldRef<"Order", 'Float'>
   readonly toAddress: Prisma.FieldRef<"Order", 'String'>
-  readonly toLat: Prisma.FieldRef<"Order", 'Float'>
-  readonly toLng: Prisma.FieldRef<"Order", 'Float'>
-  readonly price: Prisma.FieldRef<"Order", 'Decimal'>
   readonly status: Prisma.FieldRef<"Order", 'OrderStatus'>
   readonly createdAt: Prisma.FieldRef<"Order", 'DateTime'>
+  readonly fromLat: Prisma.FieldRef<"Order", 'Float'>
+  readonly fromLng: Prisma.FieldRef<"Order", 'Float'>
+  readonly price: Prisma.FieldRef<"Order", 'Decimal'>
+  readonly toLat: Prisma.FieldRef<"Order", 'Float'>
+  readonly toLng: Prisma.FieldRef<"Order", 'Float'>
   readonly updatedAt: Prisma.FieldRef<"Order", 'DateTime'>
 }
     

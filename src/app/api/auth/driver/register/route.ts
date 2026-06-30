@@ -1,16 +1,13 @@
 import { NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
 
+// /api/auth/driver/register
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  console.log("body:", body);
-  const { phone, name, email, avatar, carModel, carNumber } = body;
+  const { phone, name } = body;
 
-  if (!phone || !name || !carModel || !carNumber) {
-    return Response.json(
-      { error: "phone, name, carModel and carNumber are required" },
-      { status: 400 },
-    );
+  if (!phone || !name) {
+    return Response.json({ error: "phone and name are required" }, { status: 400 });
   }
 
   const phoneRegex = /^\+7[0-9]{10}$/;
@@ -30,12 +27,8 @@ export async function POST(request: NextRequest) {
     data: {
       phone,
       name,
-      email,
-      avatar,
       role: "DRIVER",
-      driver: {
-        create: { carModel, carNumber },
-      },
+      driver: { create: {} },
     },
     include: { driver: true },
   });
@@ -47,13 +40,7 @@ export async function POST(request: NextRequest) {
         phone: user.phone,
         name: user.name,
         role: user.role,
-        email: user.email,
-        avatar: user.avatar,
-        driver: {
-          id: user.driver!.id,
-          carModel: user.driver!.carModel,
-          carNumber: user.driver!.carNumber,
-        },
+        driver: { id: user.driver!.id },
       },
     },
     { status: 201 },

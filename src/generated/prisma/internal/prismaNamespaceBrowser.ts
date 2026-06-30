@@ -80,8 +80,8 @@ export const UserScalarFieldEnum = {
   role: 'role',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  email: 'email',
   avatar: 'avatar',
+  email: 'email',
   rating: 'rating'
 } as const
 
@@ -93,9 +93,9 @@ export const DriverScalarFieldEnum = {
   userId: 'userId',
   carModel: 'carModel',
   carNumber: 'carNumber',
-  rating: 'rating',
   isOnline: 'isOnline',
   createdAt: 'createdAt',
+  rating: 'rating',
   updatedAt: 'updatedAt'
 } as const
 
@@ -107,14 +107,14 @@ export const OrderScalarFieldEnum = {
   clientId: 'clientId',
   driverId: 'driverId',
   fromAddress: 'fromAddress',
-  fromLat: 'fromLat',
-  fromLng: 'fromLng',
   toAddress: 'toAddress',
-  toLat: 'toLat',
-  toLng: 'toLng',
-  price: 'price',
   status: 'status',
   createdAt: 'createdAt',
+  fromLat: 'fromLat',
+  fromLng: 'fromLng',
+  price: 'price',
+  toLat: 'toLat',
+  toLng: 'toLng',
   updatedAt: 'updatedAt'
 } as const
 

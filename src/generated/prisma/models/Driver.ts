@@ -39,9 +39,9 @@ export type DriverMinAggregateOutputType = {
   userId: string | null
   carModel: string | null
   carNumber: string | null
-  rating: number | null
   isOnline: boolean | null
   createdAt: Date | null
+  rating: number | null
   updatedAt: Date | null
 }
 
@@ -50,9 +50,9 @@ export type DriverMaxAggregateOutputType = {
   userId: string | null
   carModel: string | null
   carNumber: string | null
-  rating: number | null
   isOnline: boolean | null
   createdAt: Date | null
+  rating: number | null
   updatedAt: Date | null
 }
 
@@ -61,9 +61,9 @@ export type DriverCountAggregateOutputType = {
   userId: number
   carModel: number
   carNumber: number
-  rating: number
   isOnline: number
   createdAt: number
+  rating: number
   updatedAt: number
   _all: number
 }
@@ -82,9 +82,9 @@ export type DriverMinAggregateInputType = {
   userId?: true
   carModel?: true
   carNumber?: true
-  rating?: true
   isOnline?: true
   createdAt?: true
+  rating?: true
   updatedAt?: true
 }
 
@@ -93,9 +93,9 @@ export type DriverMaxAggregateInputType = {
   userId?: true
   carModel?: true
   carNumber?: true
-  rating?: true
   isOnline?: true
   createdAt?: true
+  rating?: true
   updatedAt?: true
 }
 
@@ -104,9 +104,9 @@ export type DriverCountAggregateInputType = {
   userId?: true
   carModel?: true
   carNumber?: true
-  rating?: true
   isOnline?: true
   createdAt?: true
+  rating?: true
   updatedAt?: true
   _all?: true
 }
@@ -200,11 +200,11 @@ export type DriverGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 export type DriverGroupByOutputType = {
   id: string
   userId: string
-  carModel: string
-  carNumber: string
-  rating: number
+  carModel: string | null
+  carNumber: string | null
   isOnline: boolean
   createdAt: Date
+  rating: number
   updatedAt: Date
   _count: DriverCountAggregateOutputType | null
   _avg: DriverAvgAggregateOutputType | null
@@ -234,11 +234,11 @@ export type DriverWhereInput = {
   NOT?: Prisma.DriverWhereInput | Prisma.DriverWhereInput[]
   id?: Prisma.StringFilter<"Driver"> | string
   userId?: Prisma.StringFilter<"Driver"> | string
-  carModel?: Prisma.StringFilter<"Driver"> | string
-  carNumber?: Prisma.StringFilter<"Driver"> | string
-  rating?: Prisma.FloatFilter<"Driver"> | number
+  carModel?: Prisma.StringNullableFilter<"Driver"> | string | null
+  carNumber?: Prisma.StringNullableFilter<"Driver"> | string | null
   isOnline?: Prisma.BoolFilter<"Driver"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Driver"> | Date | string
+  rating?: Prisma.FloatFilter<"Driver"> | number
   updatedAt?: Prisma.DateTimeFilter<"Driver"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   orders?: Prisma.OrderListRelationFilter
@@ -247,11 +247,11 @@ export type DriverWhereInput = {
 export type DriverOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
-  carModel?: Prisma.SortOrder
-  carNumber?: Prisma.SortOrder
-  rating?: Prisma.SortOrder
+  carModel?: Prisma.SortOrderInput | Prisma.SortOrder
+  carNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   isOnline?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  rating?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
   orders?: Prisma.OrderOrderByRelationAggregateInput
@@ -263,11 +263,11 @@ export type DriverWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.DriverWhereInput | Prisma.DriverWhereInput[]
   OR?: Prisma.DriverWhereInput[]
   NOT?: Prisma.DriverWhereInput | Prisma.DriverWhereInput[]
-  carModel?: Prisma.StringFilter<"Driver"> | string
-  carNumber?: Prisma.StringFilter<"Driver"> | string
-  rating?: Prisma.FloatFilter<"Driver"> | number
+  carModel?: Prisma.StringNullableFilter<"Driver"> | string | null
+  carNumber?: Prisma.StringNullableFilter<"Driver"> | string | null
   isOnline?: Prisma.BoolFilter<"Driver"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Driver"> | Date | string
+  rating?: Prisma.FloatFilter<"Driver"> | number
   updatedAt?: Prisma.DateTimeFilter<"Driver"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   orders?: Prisma.OrderListRelationFilter
@@ -276,11 +276,11 @@ export type DriverWhereUniqueInput = Prisma.AtLeast<{
 export type DriverOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
-  carModel?: Prisma.SortOrder
-  carNumber?: Prisma.SortOrder
-  rating?: Prisma.SortOrder
+  carModel?: Prisma.SortOrderInput | Prisma.SortOrder
+  carNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   isOnline?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  rating?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.DriverCountOrderByAggregateInput
   _avg?: Prisma.DriverAvgOrderByAggregateInput
@@ -295,21 +295,21 @@ export type DriverScalarWhereWithAggregatesInput = {
   NOT?: Prisma.DriverScalarWhereWithAggregatesInput | Prisma.DriverScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Driver"> | string
   userId?: Prisma.StringWithAggregatesFilter<"Driver"> | string
-  carModel?: Prisma.StringWithAggregatesFilter<"Driver"> | string
-  carNumber?: Prisma.StringWithAggregatesFilter<"Driver"> | string
-  rating?: Prisma.FloatWithAggregatesFilter<"Driver"> | number
+  carModel?: Prisma.StringNullableWithAggregatesFilter<"Driver"> | string | null
+  carNumber?: Prisma.StringNullableWithAggregatesFilter<"Driver"> | string | null
   isOnline?: Prisma.BoolWithAggregatesFilter<"Driver"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Driver"> | Date | string
+  rating?: Prisma.FloatWithAggregatesFilter<"Driver"> | number
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Driver"> | Date | string
 }
 
 export type DriverCreateInput = {
   id?: string
-  carModel: string
-  carNumber: string
-  rating?: number
+  carModel?: string | null
+  carNumber?: string | null
   isOnline?: boolean
   createdAt?: Date | string
+  rating?: number
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutDriverInput
   orders?: Prisma.OrderCreateNestedManyWithoutDriverInput
@@ -318,22 +318,22 @@ export type DriverCreateInput = {
 export type DriverUncheckedCreateInput = {
   id?: string
   userId: string
-  carModel: string
-  carNumber: string
-  rating?: number
+  carModel?: string | null
+  carNumber?: string | null
   isOnline?: boolean
   createdAt?: Date | string
+  rating?: number
   updatedAt?: Date | string
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutDriverInput
 }
 
 export type DriverUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  carModel?: Prisma.StringFieldUpdateOperationsInput | string
-  carNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  carNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutDriverNestedInput
   orders?: Prisma.OrderUpdateManyWithoutDriverNestedInput
@@ -342,11 +342,11 @@ export type DriverUpdateInput = {
 export type DriverUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  carModel?: Prisma.StringFieldUpdateOperationsInput | string
-  carNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  carNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   orders?: Prisma.OrderUncheckedUpdateManyWithoutDriverNestedInput
 }
@@ -354,32 +354,32 @@ export type DriverUncheckedUpdateInput = {
 export type DriverCreateManyInput = {
   id?: string
   userId: string
-  carModel: string
-  carNumber: string
-  rating?: number
+  carModel?: string | null
+  carNumber?: string | null
   isOnline?: boolean
   createdAt?: Date | string
+  rating?: number
   updatedAt?: Date | string
 }
 
 export type DriverUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  carModel?: Prisma.StringFieldUpdateOperationsInput | string
-  carNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  carNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type DriverUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  carModel?: Prisma.StringFieldUpdateOperationsInput | string
-  carNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  carNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -393,9 +393,9 @@ export type DriverCountOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   carModel?: Prisma.SortOrder
   carNumber?: Prisma.SortOrder
-  rating?: Prisma.SortOrder
   isOnline?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  rating?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
@@ -408,9 +408,9 @@ export type DriverMaxOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   carModel?: Prisma.SortOrder
   carNumber?: Prisma.SortOrder
-  rating?: Prisma.SortOrder
   isOnline?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  rating?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
@@ -419,9 +419,9 @@ export type DriverMinOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   carModel?: Prisma.SortOrder
   carNumber?: Prisma.SortOrder
-  rating?: Prisma.SortOrder
   isOnline?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  rating?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
@@ -461,16 +461,16 @@ export type DriverUncheckedUpdateOneWithoutUserNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.DriverUpdateToOneWithWhereWithoutUserInput, Prisma.DriverUpdateWithoutUserInput>, Prisma.DriverUncheckedUpdateWithoutUserInput>
 }
 
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
+}
+
 export type FloatFieldUpdateOperationsInput = {
   set?: number
   increment?: number
   decrement?: number
   multiply?: number
   divide?: number
-}
-
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
 }
 
 export type DriverCreateNestedOneWithoutOrdersInput = {
@@ -491,22 +491,22 @@ export type DriverUpdateOneWithoutOrdersNestedInput = {
 
 export type DriverCreateWithoutUserInput = {
   id?: string
-  carModel: string
-  carNumber: string
-  rating?: number
+  carModel?: string | null
+  carNumber?: string | null
   isOnline?: boolean
   createdAt?: Date | string
+  rating?: number
   updatedAt?: Date | string
   orders?: Prisma.OrderCreateNestedManyWithoutDriverInput
 }
 
 export type DriverUncheckedCreateWithoutUserInput = {
   id?: string
-  carModel: string
-  carNumber: string
-  rating?: number
+  carModel?: string | null
+  carNumber?: string | null
   isOnline?: boolean
   createdAt?: Date | string
+  rating?: number
   updatedAt?: Date | string
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutDriverInput
 }
@@ -529,33 +529,33 @@ export type DriverUpdateToOneWithWhereWithoutUserInput = {
 
 export type DriverUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  carModel?: Prisma.StringFieldUpdateOperationsInput | string
-  carNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  carNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   orders?: Prisma.OrderUpdateManyWithoutDriverNestedInput
 }
 
 export type DriverUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  carModel?: Prisma.StringFieldUpdateOperationsInput | string
-  carNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  carNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   orders?: Prisma.OrderUncheckedUpdateManyWithoutDriverNestedInput
 }
 
 export type DriverCreateWithoutOrdersInput = {
   id?: string
-  carModel: string
-  carNumber: string
-  rating?: number
+  carModel?: string | null
+  carNumber?: string | null
   isOnline?: boolean
   createdAt?: Date | string
+  rating?: number
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutDriverInput
 }
@@ -563,11 +563,11 @@ export type DriverCreateWithoutOrdersInput = {
 export type DriverUncheckedCreateWithoutOrdersInput = {
   id?: string
   userId: string
-  carModel: string
-  carNumber: string
-  rating?: number
+  carModel?: string | null
+  carNumber?: string | null
   isOnline?: boolean
   createdAt?: Date | string
+  rating?: number
   updatedAt?: Date | string
 }
 
@@ -589,11 +589,11 @@ export type DriverUpdateToOneWithWhereWithoutOrdersInput = {
 
 export type DriverUpdateWithoutOrdersInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  carModel?: Prisma.StringFieldUpdateOperationsInput | string
-  carNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  carNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutDriverNestedInput
 }
@@ -601,11 +601,11 @@ export type DriverUpdateWithoutOrdersInput = {
 export type DriverUncheckedUpdateWithoutOrdersInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  carModel?: Prisma.StringFieldUpdateOperationsInput | string
-  carNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  carNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -645,9 +645,9 @@ export type DriverSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   userId?: boolean
   carModel?: boolean
   carNumber?: boolean
-  rating?: boolean
   isOnline?: boolean
   createdAt?: boolean
+  rating?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   orders?: boolean | Prisma.Driver$ordersArgs<ExtArgs>
@@ -659,9 +659,9 @@ export type DriverSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   userId?: boolean
   carModel?: boolean
   carNumber?: boolean
-  rating?: boolean
   isOnline?: boolean
   createdAt?: boolean
+  rating?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["driver"]>
@@ -671,9 +671,9 @@ export type DriverSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   userId?: boolean
   carModel?: boolean
   carNumber?: boolean
-  rating?: boolean
   isOnline?: boolean
   createdAt?: boolean
+  rating?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["driver"]>
@@ -683,13 +683,13 @@ export type DriverSelectScalar = {
   userId?: boolean
   carModel?: boolean
   carNumber?: boolean
-  rating?: boolean
   isOnline?: boolean
   createdAt?: boolean
+  rating?: boolean
   updatedAt?: boolean
 }
 
-export type DriverOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "carModel" | "carNumber" | "rating" | "isOnline" | "createdAt" | "updatedAt", ExtArgs["result"]["driver"]>
+export type DriverOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "carModel" | "carNumber" | "isOnline" | "createdAt" | "rating" | "updatedAt", ExtArgs["result"]["driver"]>
 export type DriverInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   orders?: boolean | Prisma.Driver$ordersArgs<ExtArgs>
@@ -711,11 +711,11 @@ export type $DriverPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     userId: string
-    carModel: string
-    carNumber: string
-    rating: number
+    carModel: string | null
+    carNumber: string | null
     isOnline: boolean
     createdAt: Date
+    rating: number
     updatedAt: Date
   }, ExtArgs["result"]["driver"]>
   composites: {}
@@ -1146,9 +1146,9 @@ export interface DriverFieldRefs {
   readonly userId: Prisma.FieldRef<"Driver", 'String'>
   readonly carModel: Prisma.FieldRef<"Driver", 'String'>
   readonly carNumber: Prisma.FieldRef<"Driver", 'String'>
-  readonly rating: Prisma.FieldRef<"Driver", 'Float'>
   readonly isOnline: Prisma.FieldRef<"Driver", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Driver", 'DateTime'>
+  readonly rating: Prisma.FieldRef<"Driver", 'Float'>
   readonly updatedAt: Prisma.FieldRef<"Driver", 'DateTime'>
 }
     
