@@ -1,8 +1,8 @@
 
-Taxi Backend
+uDrive Backend
 Project
 
-Taxi service for mini town.
+uDrive service for mini town.
 
 Stack
 Next.js 16

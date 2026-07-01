@@ -5,12 +5,16 @@ import { signAccessToken, signRefreshToken } from "@/lib/jwt";
 export async function POST(request: NextRequest) {
   const body = await request.json();
   const { phone } = body;
+  console.log("phone", phone);
 
   if (!phone) {
     return Response.json({ error: "Phone is required" }, { status: 400 });
   }
+  console.log(process.env.DATABASE_URL);
 
   const user = await prisma.user.findUnique({ where: { phone } });
+  console.log("user", user);
+
   if (!user) {
     return Response.json({ error: "User not found" }, { status: 404 });
   }
